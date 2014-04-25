@@ -79,4 +79,10 @@ public class ClassConfiguration extends ConfigurationElement
 	 * supporting a documentation function
 	 */
 	public Boolean inspectInterfaces;
+
+	/**
+	 * add by luopeng 2014.04.25
+	 * Specifies whether directly check parent field, this option is used in xml-based configuration.
+	 */
+	public Boolean directParentClassField;
 }
