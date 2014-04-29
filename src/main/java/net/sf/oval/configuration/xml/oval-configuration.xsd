@@ -272,11 +272,6 @@
 						<documentation source="java:java.lang.Class">The fully qualified name of the class</documentation>
 					</annotation>
 				</attribute>
-                <attribute name="directParentClassField" use="optional" type="boolean" default="true">
-                    <annotation>
-                        <documentation>Declares if directly check parent field</documentation>
-                    </annotation>
-                </attribute>
 			</extension>
 		</complexContent>
 	</complexType>

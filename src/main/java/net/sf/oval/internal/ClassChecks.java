@@ -113,11 +113,6 @@ public final class ClassChecks
 	private final ParameterNameResolver parameterNameResolver;
 
 	/**
-	 * add by luopeng 2014.04.25
-	 */
-	public boolean directParentClassField;
-
-	/**
 	 * package constructor used by the Validator class
 	 *
 	 * @param clazz

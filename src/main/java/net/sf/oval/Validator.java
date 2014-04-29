@@ -324,7 +324,6 @@ public class Validator implements IValidator
 	private void _addChecks(final ClassChecks cc, final ClassConfiguration classCfg) throws InvalidConfigurationException,
 			ReflectionException
 	{
-
 		if (TRUE.equals(classCfg.overwrite)) cc.clear();
 
 		if (classCfg.checkInvariants != null) cc.isCheckInvariants = classCfg.checkInvariants;
@@ -334,15 +333,6 @@ public class Validator implements IValidator
 		final boolean applyFieldConstraintsToSetters = TRUE.equals(classCfg.applyFieldConstraintsToSetters);
 		final boolean assertParametersNotNull = TRUE.equals(classCfg.assertParametersNotNull);
 		final NotNullCheck sharedNotNullCheck = assertParametersNotNull ? new NotNullCheck() : null;
-
-		//add by luopeng 2014.04.25
-		boolean directParentClassField = true;
-		if(classCfg.directParentClassField != null && !TRUE.equals(classCfg.directParentClassField))
-		{
-			directParentClassField = false;
-		}
-		cc.directParentClassField = directParentClassField;
-
 
 		try
 		{
@@ -362,15 +352,7 @@ public class Validator implements IValidator
 			 * ******************************/
 			if (classCfg.fieldConfigurations != null) for (final FieldConfiguration fieldCfg : classCfg.fieldConfigurations)
 			{
-				//modify by luopeng 2014.04.25
-				Field f = null;
-				if(directParentClassField){
-					f = ReflectionUtils.getFieldRecursive(classCfg.type,fieldCfg.name);
-				}else{
-					f = classCfg.type.getDeclaredField(fieldCfg.name);
-				}
-				//--
-				final Field field = f;
+				final Field field = classCfg.type.getDeclaredField(fieldCfg.name);
 
 				if (TRUE.equals(fieldCfg.overwrite)) cc.clearFieldChecks(field);
 
